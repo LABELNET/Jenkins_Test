@@ -17,6 +17,9 @@ pipeline {
     }
 
     // test when
+    /**
+     * when 为 false 的时候，其后面的 steps 不执行
+     **/
 
     stage('test when'){
       when{
@@ -27,6 +30,11 @@ pipeline {
       }
     }
   
+    stage('after when'){
+      steps{
+        echp 'after when build'
+      }
+    }
    
   }
 }
