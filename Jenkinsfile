@@ -7,7 +7,7 @@ pipeline {
       steps {
         echo 'build'
         // 直接执行脚本
-        //sh 'chmod 777 ./shell/build.sh'
+        sh 'chmod 777 ./shell/build.sh'
         //sh './shell/build.sh'
         // 直接执行命令行
         // sh 'javac ./src/Main.java'
@@ -33,7 +33,7 @@ pipeline {
             echo '2017Things were different before...'
         }
       }
-      
+
     }
     
     // end
