@@ -6,9 +6,10 @@ pipeline {
     stage('build') {
       steps {
         echo 'build'
-        sh 'javac ./src/Main.java'
-        sh 'cp ./src/Main.class ~/java'
-        sh 'rm ./src/Main.class'
+        sh './shell/build.sh'
+        // sh 'javac ./src/Main.java'
+        // sh 'cp ./src/Main.class ~/java'
+        // sh 'rm ./src/Main.class'
         echo 'build finish'
       }
     }
