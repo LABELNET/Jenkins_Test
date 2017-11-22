@@ -1,5 +1,10 @@
 pipeline {
   agent any
+
+  parameters {
+    string(name: 'BUILD_USER', defaultValue: 'labelnet@smartahc.com', description: 'e-mail')
+  }
+
   stages {
     
     // build
@@ -8,7 +13,7 @@ pipeline {
         echo 'build'
         // 直接执行脚本
         //sh 'chmod 777 ./shell/build.sh'
-        sh './shell/build.sh'
+        //sh './shell/build.sh'
         // 直接执行命令行
         // sh 'javac ./src/Main.java'
         // sh 'cp ./src/Main.class ~/java'
@@ -24,13 +29,20 @@ pipeline {
             echo '2017I succeeeded!'
         }
         unstable {
+          script{
+                mail  to: '${params.BUILD_USER}',
+                 subject: "unstable pipeline: ${currentBuild.fullDisplayName}",
+                    body: "构建不稳定: ${env.BUILD_URL}"
+            }
             echo '2017I am unstable :/'
         }
         failure {
             echo '2017I failed :('
-            mail to: 'labelnet@smartahc.com',
-             subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-             body: "Something is wrong with ${env.BUILD_URL}"
+            script{
+                mail  to: '${params.BUILD_USER}',
+                 subject: "failed pipeline: ${currentBuild.fullDisplayName}",
+                    body: "构建失败: ${env.BUILD_URL}"
+            }
         }
         changed {
             echo '2017Things were different before...'
@@ -83,6 +95,11 @@ pipeline {
         }
         success {
             echo 'I succeeeded!'
+            script{
+                mail  to: '${params.BUILD_USER}',
+                 subject: "pipeline success: ${currentBuild.fullDisplayName}",
+                    body: "构建成功: ${env.BUILD_URL}"
+            }
         }
         unstable {
             echo 'I am unstable :/'
