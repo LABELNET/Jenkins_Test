@@ -20,12 +20,11 @@ pipeline {
 
     stage('test when'){
       when{
-        branch 'dev'
+        branch 'master'
       }
       steps{
         echo 'test when build'
       }
-
     }
   
    
