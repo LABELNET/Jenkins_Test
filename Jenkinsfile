@@ -31,8 +31,20 @@ pipeline {
     }
   
     stage('after when'){
+
+      if(env.BRANCH_NAME=='master'){
+        echo 'brance name master'
+      }else{
+        echo 'brance name not master'
+      }
+
       steps{
         echo 'after when build'
+
+        script{
+          def name = 'test script'
+          echo 'this is step name :${name}'
+        }
       }
     }
    
