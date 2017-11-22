@@ -15,6 +15,25 @@ pipeline {
         // sh 'rm ./src/Main.class'
         echo 'build finish'
       }
+
+      post {
+         always {
+            echo '2017One way or another, I have finished'
+        }
+        success {
+            echo '2017I succeeeded!'
+        }
+        unstable {
+            echo '2017I am unstable :/'
+        }
+        failure {
+            echo '2017I failed :('
+        }
+        changed {
+            echo '2017Things were different before...'
+        }
+      }
+      
     }
     
     // end
