@@ -6,14 +6,11 @@ pipeline {
     stage('build') {
       steps {
         echo 'build'
-        sh 'cd ~/java'
-        sh 'mkdir testJenkins'
-        sh 'cd testJenkins'
-        sh 'git clone https://github.com/LABELNET/Jenkins_Test.git'
-        sh 'cd Jenkins_Test/src'
+        sh 'cd src'
         sh 'javac Main.java'
-        sh 'cp Main.class ~/java/testJenkins/'
+        sh 'cp Main.class ~/java'
         sh 'rm Main.class'
+        echo 'build finish'
       }
     }
     
