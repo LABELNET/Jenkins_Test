@@ -30,7 +30,7 @@ pipeline {
         }
         unstable {
           script{
-                mail  to: '${params.BUILD_USER}',
+                mail  to: "${params.BUILD_USER}",
                  subject: "unstable pipeline: ${currentBuild.fullDisplayName}",
                     body: "构建不稳定: ${env.BUILD_URL}"
             }
@@ -39,7 +39,7 @@ pipeline {
         failure {
             echo '2017I failed :('
             script{
-                mail  to: '${params.BUILD_USER}',
+                mail  to: "${params.BUILD_USER}",
                  subject: "failed pipeline: ${currentBuild.fullDisplayName}",
                     body: "构建失败: ${env.BUILD_URL}"
             }
@@ -96,7 +96,7 @@ pipeline {
         success {
             echo 'I succeeeded!'
             script{
-                mail  to: '${params.BUILD_USER}',
+                mail  to: "${params.BUILD_USER}",
                  subject: "pipeline success: ${currentBuild.fullDisplayName}",
                     body: "构建成功: ${env.BUILD_URL}"
             }
