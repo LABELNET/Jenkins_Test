@@ -6,6 +6,7 @@ pipeline {
     stage('build') {
       steps {
         echo 'build'
+        sh 'chmod 777 ./shell/build.sh'
         sh './shell/build.sh'
         // sh 'javac ./src/Main.java'
         // sh 'cp ./src/Main.class ~/java'
