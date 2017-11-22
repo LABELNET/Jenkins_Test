@@ -23,7 +23,7 @@ pipeline {
 
     stage('test when'){
       when{
-        branch 'master'
+        branch 'dev'
       }
       steps{
         echo 'test when build'
@@ -32,7 +32,7 @@ pipeline {
   
     stage('after when'){
       steps{
-        echp 'after when build'
+        echo 'after when build'
       }
     }
    
