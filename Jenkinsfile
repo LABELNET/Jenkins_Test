@@ -15,6 +15,18 @@ pipeline {
         echo 'end build'
       }
     }
+
+    // test when
+
+    stage('test when'){
+      when{
+        branch 'dev'
+      }
+      steps{
+        echo 'test when build'
+      }
+
+    }
   
    
   }
