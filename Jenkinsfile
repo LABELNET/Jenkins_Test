@@ -28,6 +28,9 @@ pipeline {
         }
         failure {
             echo '2017I failed :('
+            mail to: 'labelnet@smartahc.com',
+             subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+             body: "Something is wrong with ${env.BUILD_URL}"
         }
         changed {
             echo '2017Things were different before...'
