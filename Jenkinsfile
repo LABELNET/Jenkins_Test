@@ -6,8 +6,10 @@ pipeline {
     stage('build') {
       steps {
         echo 'build'
-        sh 'chmod 777 ./shell/build.sh'
+        // 直接执行脚本
+        //sh 'chmod 777 ./shell/build.sh'
         sh './shell/build.sh'
+        // 直接执行命令行
         // sh 'javac ./src/Main.java'
         // sh 'cp ./src/Main.class ~/java'
         // sh 'rm ./src/Main.class'
@@ -51,6 +53,23 @@ pipeline {
         }//end script
       }//end step
     }//end stage
-   
-  }
+  }// end stages
+
+  post {
+        always {
+            echo 'One way or another, I have finished'
+        }
+        success {
+            echo 'I succeeeded!'
+        }
+        unstable {
+            echo 'I am unstable :/'
+        }
+        failure {
+            echo 'I failed :('
+        }
+        changed {
+            echo 'Things were different before...'
+        }
+    }
 }
