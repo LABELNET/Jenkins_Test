@@ -100,21 +100,17 @@ pipeline {
                 // echo "mail body : ${bodyText}"
                 mail  to: "${params.BUILD_USER}",
                  subject: "pipeline success: ${currentBuild.fullDisplayName}",
-                    body: "构建结果 : ${env.BUILD_TAG} - ${currentBuild.fullDisplayName}
-
-                                    *******************************************************
-
-                                    构建状态: Success
-                                    项目名称:${currentBuild.fullDisplayName}
-                                    构建编号:${env.BUILD_NUMBER}
-                                    构建地址:${env.JOB_URL}
-                                    构建日志:${env.BUILD_URL}
-                                    
-                                    仓库版本:${env.SVN_REVISION}
-                                    仓库地址:${env.SVN_URL}
-
-                                    *******************************************************
-                                    本邮件由系统自动发送，请勿直接回复."
+                    body: "${env.BUILD_TAG}"+
+                          "\n*******************************************************"+
+                          "\n构建状态: Success"+
+                          "\n项目名称:${currentBuild.fullDisplayName}"+
+                          "\n构建编号:${env.BUILD_NUMBER}"+
+                          "\n构建地址:${env.JOB_URL}"+
+                          "\n构建日志:${env.BUILD_URL}"+
+                          "\n仓库版本:${env.SVN_REVISION}"+
+                          "\n仓库地址:${env.SVN_URL}"+
+                          "\n*******************************************************"+
+                          "\n本邮件由系统自动发送，请勿直接回复."
                  charset: 'utf-8'         
                 mimeType: 'text/plain'           
             }
@@ -124,6 +120,9 @@ pipeline {
         }
         failure {
             echo 'I failed :('
+            mail to: "${params.BUILD_USER}"
+            subject: "pipeline failure: ${currentBuild.fullDisplayName}"
+               body: "${env.BUILD_TAG}"
         }
         changed {
             echo 'Things were different before...'

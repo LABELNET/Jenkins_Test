@@ -1,23 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-　<head>
-　　<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-　　<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-   <title>pipeline : ${env.BUILD_TAG} - ${env.BUILD_DISPLAY_NAME}</title>
-</head>
-<body>
-  <h1>${env.BUILD_TAG}</h1>
-  <h3>本邮件由系统自动发送，可以直接回复！</h3>
-  <ul>
-      <li>项目名称:${currentBuild.fullDisplayName}</li>
-      <li>构建编号:${env.BUILD_NUMBER}</li>
-      <li>构建地址:${env.JOB_URL}</li>
-      <li>构建日志:${env.BUILD_URL}</li>
-  </ul>
-  <h3>结果</h3>
-  <div style="background-color:azure">
-      <p>本次构建 <h1>${STATUS}</h1> 了</p>
-  </div>
+构建结果 : ${env.BUILD_TAG} - ${env.BUILD_DISPLAY_NAME}
 
-</body>
-</html>
+*******************************************************
+
+项目名称:${currentBuild.fullDisplayName}
+构建编号:${env.BUILD_NUMBER}
+构建地址:${env.JOB_URL}
+构建日志:${env.BUILD_URL}
+
+*******************************************************
+本邮件由系统自动发送，请勿直接回复.
