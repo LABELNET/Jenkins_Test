@@ -118,7 +118,8 @@ pipeline {
                  emailext to: "${params.BUILD_USER}",
                  subject: "pipeline success: ${env.BUILD_TAG}",
                     body: "${bodyText}",
-               attachLog: true,     
+               attachLog: true,
+               compressLog: true, 
                 mimeType: "text/html"
             }
           
