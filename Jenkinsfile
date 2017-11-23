@@ -100,7 +100,7 @@ pipeline {
                 // echo "mail body : ${bodyText}"
                 mail  to: "${params.BUILD_USER}",
                  subject: "pipeline success: ${currentBuild.fullDisplayName}",
-                    body: "构建结果 : ${env.BUILD_TAG} - ${env.BUILD_DISPLAY_NAME}
+                    body: "构建结果 : ${env.BUILD_TAG} - ${currentBuild.fullDisplayName}
 
                                     *******************************************************
 
