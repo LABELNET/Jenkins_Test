@@ -78,7 +78,7 @@ pipeline {
 
         script{
           def name = 'test script'
-          echo 'this is step name :${name}'
+          echo "this is step name :${name}"
           if(env.BRANCH_NAME=='master'){
             echo 'brance name master'
           }else{
@@ -98,9 +98,10 @@ pipeline {
             script{
                 File file = new File('./shell/mail.html')
                 def bodyText = file.text.toString()
+                echo "mail body : ${bodyText}"
                 mail  to: "${params.BUILD_USER}",
                  subject: "pipeline success: ${currentBuild.fullDisplayName}",
-                    body: bodyText
+                    body: "status ${bodyText}"
             }
         }
         unstable {
