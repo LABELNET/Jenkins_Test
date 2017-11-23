@@ -96,12 +96,11 @@ pipeline {
         success {
             echo 'I succeeeded!'
             script{
-                File file = new File("./shell/mail.html")
-                def bodyText = file.text.toString()
+                def bodyText = readFile("./shell/mail.html").toString()
                 echo "mail body : ${bodyText}"
                 mail  to: "${params.BUILD_USER}",
                  subject: "pipeline success: ${currentBuild.fullDisplayName}",
-                    body: "status ${bodyText}"
+                    body: "${bodyText}"
             }
         }
         unstable {
