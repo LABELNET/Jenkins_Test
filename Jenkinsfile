@@ -107,8 +107,10 @@ pipeline {
                  bodyText = bodyText.replace("BUILD_URL",env.BUILD_URL)
                  bodyText = bodyText.replace("JOB_URL",env.JOB_URL)
                  // base log
-                 def log = readFile encoding:"utf-8",file:"~/.jenkins/jobs/Jenkins_Test/branches/master/builds/${env.BUILD_NUMBER}/${env.BUILD_NUMBER}.log"
-                 bodyText = bodyText.replace("BUILD_LOG",log)
+                //  def log = readFile encoding:"utf-8",
+                //                         file:"~/.jenkins/jobs/Jenkins_Test/branches/master/builds/${env.BUILD_NUMBER}/${env.BUILD_NUMBER}.log"
+                //  echo log                
+                 bodyText = bodyText.replace("BUILD_LOG",env.BUILD_LOG)
                  //echo bodyText
                  mail to: "${params.BUILD_USER}",
                  subject: "pipeline success: ${env.BUILD_TAG}",
