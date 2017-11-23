@@ -95,14 +95,11 @@ pipeline {
         }
         success {
             echo 'I succeeeded!'
-            script{
-                // def bodyText = readFile encoding: 'utf-8', file: './shell/mail.html'
-                // echo "mail body : ${bodyText}"
-                mail  to: "${params.BUILD_USER}",
+           mail  to: "${params.BUILD_USER}",
                  subject: "pipeline success: ${currentBuild.fullDisplayName}",
                     body: "${env.BUILD_TAG}"+
                           "\n*******************************************************"+
-                          "\n构建状态: Success"+
+                          "\n<h1>构建状态: Success<h1>"+
                           "\n项目名称:${currentBuild.fullDisplayName}"+
                           "\n构建编号:${env.BUILD_NUMBER}"+
                           "\n构建地址:${env.JOB_URL}"+
@@ -110,10 +107,9 @@ pipeline {
                           "\n仓库版本:${env.SVN_REVISION}"+
                           "\n仓库地址:${env.SVN_URL}"+
                           "\n*******************************************************"+
-                          "\n本邮件由系统自动发送，请勿直接回复."
-                 charset: 'utf-8',     
-                mimeType: 'text/plain'           
-            }
+                          "\n本邮件由系统自动发送，请勿直接回复.",
+                 charset: "utf-8",     
+                mimeType: "text/html"
         }
         unstable {
             echo 'I am unstable :/'
