@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">
+   <title>pipeline : ${env.BUILD_TAG} - ${env.BUILD_DISPLAY_NAME}</title>
+</head>
+<body>
+  <h1>${env.BUILD_TAG}</h1>
+  <h3>本邮件由系统自动发送，可以直接回复！</h3>
+  <ul>
+      <li>项目名称:${currentBuild.fullDisplayName}</li>
+      <li>构建编号:${env.BUILD_NUMBER}</li>
+      <li>构建地址:${env.JOB_URL}</li>
+      <li>构建日志:${env.BUILD_URL}</li>
+  </ul>
+  <h3>结果</h3>
+  <div style="background-color:azure">
+      <p>本次构建 <h1>${STATUS}</h1> 了</p>
+  </div>
+
+</body>
+</html>

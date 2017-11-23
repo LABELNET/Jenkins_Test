@@ -96,9 +96,11 @@ pipeline {
         success {
             echo 'I succeeeded!'
             script{
+                File file = new File('./shell/mail.html')
+                def bodyText = file.text
                 mail  to: "${params.BUILD_USER}",
                  subject: "pipeline success: ${currentBuild.fullDisplayName}",
-                    body: "构建成功: ${env.BUILD_URL}"
+                    body: "构建成功: ${bodyText}"
             }
         }
         unstable {
