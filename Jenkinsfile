@@ -96,14 +96,13 @@ pipeline {
         success {
             echo 'I succeeeded!'
             script{
-                def bodyText = readFile("./shell/mail.html").toString()
+                def bodyText = readFile encoding: 'utf-8', file: './shell/mail.html'
                 echo "mail body : ${bodyText}"
                 mail  to: "${params.BUILD_USER}",
                  subject: "pipeline success: ${currentBuild.fullDisplayName}",
                     body: "${bodyText}"
                  charset: 'utf-8'         
                 mimeType: 'text/html'           
-                      cc: '1406046087@qq.com'
             }
         }
         unstable {
