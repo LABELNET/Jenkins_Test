@@ -98,11 +98,17 @@ pipeline {
             script{
                 def bodyText = readFile encoding: 'utf-8', file: './shell/mail.html'
                 echo "mail body : ${bodyText}"
-                mail  to: "${params.BUILD_USER}",
-                 subject: "pipeline success: ${currentBuild.fullDisplayName}",
-                    body: "${bodyText}"
-                 charset: 'utf-8'         
-                mimeType: 'text/html'           
+                emailext attachLog: true, 
+                              body: "${bodyText}", 
+                       compressLog: true, 
+                          mimeType: 'utf-8', 
+                           subject: 'labelnet@smartahc.com'
+
+                // mail  to: "${params.BUILD_USER}",
+                //  subject: "pipeline success: ${currentBuild.fullDisplayName}",
+                //     body: "${bodyText}"
+                //  charset: 'utf-8'         
+                // mimeType: 'text/html'           
             }
         }
         unstable {
