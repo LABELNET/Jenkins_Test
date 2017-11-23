@@ -98,6 +98,9 @@ pipeline {
             script{
                  def bodyText = readFile encoding:"utf-8",
                                              file:"./shell/mail_success.html"
+                 def datas = [:]
+                 datas.title = env.BUILD_TAG
+                 
                  //echo bodyText
                  mail to: "${params.BUILD_USER}",
                  subject: "pipeline success: ${env.BUILD_TAG}",
