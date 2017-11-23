@@ -95,11 +95,13 @@ pipeline {
         }
         success {
             echo 'I succeeeded!'
-           mail  to: "${params.BUILD_USER}",
+            script{
+              
+                 mail to: "${params.BUILD_USER}",
                  subject: "pipeline success: ${currentBuild.fullDisplayName}",
                     body: "${env.BUILD_TAG}"+
-                          "\n*******************************************************"+
-                          "\n<h1>构建状态: Success<h1>"+
+                          "\n\n*******************************************************"+
+                          "\n<h1>构建状态: Success</h1>"+
                           "\n项目名称:${currentBuild.fullDisplayName}"+
                           "\n构建编号:${env.BUILD_NUMBER}"+
                           "\n构建地址:${env.JOB_URL}"+
@@ -110,6 +112,8 @@ pipeline {
                           "\n本邮件由系统自动发送，请勿直接回复.",
                  charset: "utf-8",     
                 mimeType: "text/html"
+            }
+          
         }
         unstable {
             echo 'I am unstable :/'
