@@ -101,6 +101,8 @@ pipeline {
                 mail  to: "${params.BUILD_USER}",
                  subject: "pipeline success: ${currentBuild.fullDisplayName}",
                     body: "${bodyText}"
+                 charset: 'utf-8'
+                      cc: '1406046087@qq.com'
             }
         }
         unstable {
