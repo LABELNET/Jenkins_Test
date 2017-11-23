@@ -111,7 +111,7 @@ pipeline {
                           "\n仓库地址:${env.SVN_URL}"+
                           "\n*******************************************************"+
                           "\n本邮件由系统自动发送，请勿直接回复."
-                 charset: 'utf-8'         
+                 charset: 'utf-8',     
                 mimeType: 'text/plain'           
             }
         }
@@ -120,8 +120,8 @@ pipeline {
         }
         failure {
             echo 'I failed :('
-            mail to: "${params.BUILD_USER}"
-            subject: "pipeline failure: ${currentBuild.fullDisplayName}"
+            mail to: "${params.BUILD_USER}",
+            subject: "pipeline failure: ${currentBuild.fullDisplayName}",
                body: "${env.BUILD_TAG}"
         }
         changed {
