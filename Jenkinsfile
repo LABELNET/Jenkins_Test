@@ -109,7 +109,6 @@ pipeline {
                  // base log
                 //  def log = readFile encoding:"utf-8",
                 //                         file:"${env.BUILD_NUMBER}.log"
-                // echo log 
                 // bodyText = bodyText.replace("BUILD_LOG",log)
                  //echo bodyText
                  emailext to: "${params.BUILD_USER}",
