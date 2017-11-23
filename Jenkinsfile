@@ -101,7 +101,8 @@ pipeline {
                 mail  to: "${params.BUILD_USER}",
                  subject: "pipeline success: ${currentBuild.fullDisplayName}",
                     body: "${bodyText}"
-                 charset: 'utf-8'                    
+                 charset: 'utf-8'         
+                mimeType: 'text/html'           
                       cc: '1406046087@qq.com'
             }
         }
