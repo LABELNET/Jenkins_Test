@@ -96,7 +96,7 @@ pipeline {
         success {
             echo 'I succeeeded!'
             script{
-                File file = new File('./shell/mail.html')
+                File file = new File("./shell/mail.html")
                 def bodyText = file.text.toString()
                 echo "mail body : ${bodyText}"
                 mail  to: "${params.BUILD_USER}",
