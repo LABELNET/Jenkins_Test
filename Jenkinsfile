@@ -96,20 +96,10 @@ pipeline {
         success {
             echo 'I succeeeded!'
             script{
-              
+                 def bodyText = readFile charset:"utf-8" file:"./shell/mail_success.html"
                  mail to: "${params.BUILD_USER}",
-                 subject: "pipeline success: ${currentBuild.fullDisplayName}",
-                    body: "${env.BUILD_TAG}"+
-                          "\n\n*******************************************************"+
-                          "\n<h1>构建状态: Success</h1>"+
-                          "\n项目名称:${currentBuild.fullDisplayName}"+
-                          "\n构建编号:${env.BUILD_NUMBER}"+
-                          "\n构建地址:${env.JOB_URL}"+
-                          "\n构建日志:${env.BUILD_URL}"+
-                          "\n仓库版本:${env.SVN_REVISION}"+
-                          "\n仓库地址:${env.SVN_URL}"+
-                          "\n*******************************************************"+
-                          "\n本邮件由系统自动发送，请勿直接回复.",
+                 subject: "pipeline success: ${env.BUILD_TAG}",
+                    body: "${bodyText}",
                  charset: "utf-8",     
                 mimeType: "text/html"
             }
