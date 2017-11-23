@@ -96,19 +96,27 @@ pipeline {
         success {
             echo 'I succeeeded!'
             script{
-                def bodyText = readFile encoding: 'utf-8', file: './shell/mail.html'
-                echo "mail body : ${bodyText}"
-                emailext attachLog: true, 
-                              body: "${bodyText}", 
-                       compressLog: true, 
-                          mimeType: 'utf-8', 
-                           subject: 'labelnet@smartahc.com'
+                // def bodyText = readFile encoding: 'utf-8', file: './shell/mail.html'
+                // echo "mail body : ${bodyText}"
+                mail  to: "${params.BUILD_USER}",
+                 subject: "pipeline success: ${currentBuild.fullDisplayName}",
+                    body: "构建结果 : ${env.BUILD_TAG} - ${env.BUILD_DISPLAY_NAME}
 
-                // mail  to: "${params.BUILD_USER}",
-                //  subject: "pipeline success: ${currentBuild.fullDisplayName}",
-                //     body: "${bodyText}"
-                //  charset: 'utf-8'         
-                // mimeType: 'text/html'           
+                                    *******************************************************
+
+                                    构建状态: Success
+                                    项目名称:${currentBuild.fullDisplayName}
+                                    构建编号:${env.BUILD_NUMBER}
+                                    构建地址:${env.JOB_URL}
+                                    构建日志:${env.BUILD_URL}
+                                    
+                                    仓库版本:${env.SVN_REVISION}
+                                    仓库地址:${env.SVN_URL}
+
+                                    *******************************************************
+                                    本邮件由系统自动发送，请勿直接回复."
+                 charset: 'utf-8'         
+                mimeType: 'text/plain'           
             }
         }
         unstable {
