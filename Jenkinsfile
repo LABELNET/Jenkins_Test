@@ -96,7 +96,7 @@ pipeline {
         success {
             echo 'I succeeeded!'
             script{
-                 def bodyText = readFile encoding:"utf-8" 
+                 def bodyText = readFile encoding:"utf-8",
                                              file:"./shell/mail_success.html"
                  //echo bodyText
                  mail to: "${params.BUILD_USER}",
