@@ -113,7 +113,7 @@ pipeline {
                  //echo bodyText
                  emailext to: "${params.BUILD_USER}",
                  subject: "pipeline success: ${env.BUILD_TAG}",
-                    body: "${DEFAULT_CONTENT}",
+                    body: "${FILE,path='./shell/test.html'}",
                attachLog: true,
                compressLog: true, 
                 mimeType: "text/html"
