@@ -99,6 +99,12 @@ pipeline {
                  def bodyText = readFile encoding:"utf-8",
                                              file:"./shell/mail_success.html"
                  bodyText = bodyText.replace("BUILD_TAG",env.BUILD_TAG)
+                 bodyText = bodyText.replace("BUILD_NUMBER",env.BUILD_NUMBER)
+                 bodyText = bodyText.replace("BUILD_ID",env.BUILD_ID)
+                 bodyText = bodyText.replace("fullDisplayName",currentBuild.fullDisplayName)
+                 bodyText = bodyText.replace("WORKSPACE",env.WORKSPACE)
+                 bodyText = bodyText.replace("BUILD_URL",env.BUILD_URL)
+                 bodyText = bodyText.replace("JOB_URL",env.JOB_URL)
                  echo bodyText
                  //echo bodyText
                  mail to: "${params.BUILD_USER}",
