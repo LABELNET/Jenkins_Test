@@ -97,10 +97,10 @@ pipeline {
             echo 'I succeeeded!'
             script{
                 File file = new File('./shell/mail.html')
-                def bodyText = file.text
+                def bodyText = file.text.toString()
                 mail  to: "${params.BUILD_USER}",
                  subject: "pipeline success: ${currentBuild.fullDisplayName}",
-                    body: "构建成功: ${bodyText}"
+                    body: bodyText
             }
         }
         unstable {
