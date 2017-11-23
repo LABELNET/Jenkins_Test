@@ -107,9 +107,6 @@ pipeline {
                  bodyText = bodyText.replace("BUILD_URL",env.BUILD_URL)
                  bodyText = bodyText.replace("JOB_URL",env.JOB_URL)
                  // base log
-                //  def str_sh = "cp ~/.jenkins/jobs/Jenkins_Test/branches/master/builds/${env.BUILD_NUMBER}/${env.BUILD_NUMBER}.log ./"
-                //  sh str_sh
-                 
                 //  def log = readFile encoding:"utf-8",
                 //                         file:"${env.BUILD_NUMBER}.log"
                 // echo log 
