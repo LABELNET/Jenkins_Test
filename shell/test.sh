@@ -1,4 +1,4 @@
 #!/bin/bash
 ls
-node -v
-npm -v
+#node -v
+#npm -v
