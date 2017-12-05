@@ -95,27 +95,30 @@ pipeline {
         }
         success {
             echo 'I succeeeded!'
-            script{
-                 def bodyText = readFile encoding:"utf-8",
-                                             file:"./shell/mail_success.html"
-                 // base info
-                 bodyText = bodyText.replace("BUILD_TAG",env.BUILD_TAG)
-                 bodyText = bodyText.replace("BUILD_NUMBER",env.BUILD_NUMBER)
-                 bodyText = bodyText.replace("BUILD_ID",env.BUILD_ID)
-                 bodyText = bodyText.replace("fullDisplayName",currentBuild.fullDisplayName)
-                 bodyText = bodyText.replace("WORKSPACE",env.WORKSPACE)
-                 bodyText = bodyText.replace("BUILD_URL",env.BUILD_URL)
-                 bodyText = bodyText.replace("JOB_URL",env.JOB_URL)
-                 // base log
-                //  def log = readFile encoding:"utf-8",
-                //                         file:"${env.BUILD_NUMBER}.log"
-                // bodyText = bodyText.replace("BUILD_LOG",log)
-                 //echo bodyText
-                 emailext to: "${params.BUILD_USER}",
-                 subject: "pipeline success: ${env.BUILD_TAG}",
-                    body: $DEFAULT_CONTENT,
-                mimeType: "text/html"
-            }
+            mail to: "${params.BUILD_USER}",
+            subject: "pipeline success",
+               body: "success"
+            // script{
+            //      def bodyText = readFile encoding:"utf-8",
+            //                                  file:"./shell/mail_success.html"
+            //      // base info
+            //      bodyText = bodyText.replace("BUILD_TAG",env.BUILD_TAG)
+            //      bodyText = bodyText.replace("BUILD_NUMBER",env.BUILD_NUMBER)
+            //      bodyText = bodyText.replace("BUILD_ID",env.BUILD_ID)
+            //      bodyText = bodyText.replace("fullDisplayName",currentBuild.fullDisplayName)
+            //      bodyText = bodyText.replace("WORKSPACE",env.WORKSPACE)
+            //      bodyText = bodyText.replace("BUILD_URL",env.BUILD_URL)
+            //      bodyText = bodyText.replace("JOB_URL",env.JOB_URL)
+            //      // base log
+            //     //  def log = readFile encoding:"utf-8",
+            //     //                         file:"${env.BUILD_NUMBER}.log"
+            //     // bodyText = bodyText.replace("BUILD_LOG",log)
+            //      //echo bodyText
+            //      emailext to: "${params.BUILD_USER}",
+            //      subject: "pipeline success: ${env.BUILD_TAG}",
+            //         body: $DEFAULT_CONTENT,
+            //     mimeType: "text/html"
+            // }
           
         }
         unstable {
