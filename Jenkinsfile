@@ -16,10 +16,6 @@ pipeline {
         sh './shell/test.sh'
         sh 'node --version'
         sh 'npm --version'
-        // 直接执行命令行
-        // sh 'javac ./src/Main.java'
-        // sh 'cp ./src/Main.class ~/java'
-        // sh 'rm ./src/Main.class'
         echo 'build finish'
       }
 
