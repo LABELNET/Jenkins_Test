@@ -19,8 +19,11 @@ pipeline {
         sh 'cnpm --version'
         sh '''
            cd src
+           ls
            cnpm install
+           ls
            cnpm run test
+           ls
         '''
         echo 'build finish'
       }
