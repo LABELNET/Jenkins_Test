@@ -16,11 +16,11 @@ pipeline {
         sh './shell/test.sh'
         sh 'node --version'
         sh 'npm --version'
-        sh ```
+        sh '''
            cd src
            npm install
            npm run test
-        ```
+        '''
         echo 'build finish'
       }
 
