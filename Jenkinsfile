@@ -15,11 +15,11 @@ pipeline {
         sh 'chmod 777 ./shell/test.sh'
         sh './shell/test.sh'
         sh 'node --version'
-        sh 'npm --version'
+        sh 'cnpm --version'
         sh '''
            cd src
-           npm install
-           npm run test
+           cnpm install
+           cnpm run test
         '''
         echo 'build finish'
       }
