@@ -14,17 +14,16 @@ pipeline {
         // 直接执行脚本
         sh 'chmod 777 ./shell/test.sh'
         sh './shell/test.sh'
-        sh 'node --version'
-        sh 'npm --version'
-        sh 'cnpm --version'
-        sh '''
-           cd src
-           ls
-           cnpm install
-           ls
-           cnpm run test
-           ls
-        '''
+        // sh 'node --version'
+        // sh 'cnpm --version'
+        // sh '''
+        //    cd src
+        //    ls
+        //    cnpm install
+        //    ls
+        //    cnpm run test
+        //    ls
+        // '''
         echo 'build finish'
       }
 
